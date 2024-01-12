@@ -2,6 +2,8 @@ window.onload = function () {
 
     var correntElectrica = true;
 
+    var hiHanRegals = false;
+
     var elementsElectrics = document.querySelectorAll('.yellow, .blue');
 
     var stars = document.querySelectorAll('.tree .star .yellow');
@@ -17,7 +19,6 @@ window.onload = function () {
     var tercerPot = pots[2];
 
     // primer punt
-    crearRegals();
     hoverCanviarColorBombetes();
     hoverCanviarColorStar();
 
@@ -38,7 +39,7 @@ window.onload = function () {
                 break;
             case "R": // quart punt
                 console.log("R");
-
+                crearRegals();
                 break;
             case "L": // cinquè punt
                 console.log("L");
@@ -137,29 +138,46 @@ window.onload = function () {
                 }
             });
         } else if (!correntElectrica) {
-            console.log("No hi ha electricitat per encendre la estrella");
+            console.log("No hi ha electricitat per encendre l'estrella");
         }
     }
 
     function crearRegals() {
 
-        var divRegal = document.createElement('div');
-        divRegal.className = 'light_pixel red';
-
-        for (var i = 0; i < 3; i++) {
+        // si no hi han regals, es crearàn
+        if (!hiHanRegals) {
+            // (segonPot = segona linea del tronc)
             var divRegal = document.createElement('div');
             divRegal.className = 'light_pixel red';
 
-            segonPot.appendChild(divRegal);
+            // avans del tronc
+            for (var i = 0; i < 8; i++) {
+                var divRegal = document.createElement('div');
+                divRegal.className = 'light_pixel red';
+
+                // va al primer fill del contenidor, i s'hi posa davant
+                var primerHijo = segonPot.firstChild;
+                segonPot.insertBefore(divRegal, primerHijo);
+            }
+
+
+            // després del tronc
+            for (var i = 0; i < 8; i++) {
+                var divRegal = document.createElement('div');
+                divRegal.className = 'light_pixel red';
+
+                // va al últim fill del contenidor, i s'hi posa darrera
+                segonPot.appendChild(divRegal);
+            }
+
+            // arreglar els espais buits de la segona línia
+
+            // (tercerPot = tercera línia del tronc)
         }
 
-        for (var i = 0; i < 3; i++) {
-            var divRegal = document.createElement('div');
-            divRegal.className = 'light_pixel red';
-
-            // Obtén el primer hijo del contenedor y lo inserta antes de él
-            var primerHijo = segonPot.firstChild;
-            segonPot.insertBefore(divRegal, primerHijo);
-        }
+        /*
+        en cas que sigui la primera vegada que creem regals, ho guardem en una variable perquè no se'n creïn més
+        */
+        hiHanRegals = true;
     }
 }
