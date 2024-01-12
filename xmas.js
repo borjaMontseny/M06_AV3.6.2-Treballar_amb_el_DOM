@@ -147,37 +147,26 @@ window.onload = function () {
         // si no hi han regals, es crearàn
         if (!hiHanRegals) {
             // (segonPot = segona linea del tronc)
+           //  segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+        }
+
+
+        // després del tronc
+        for (var i = 0; i < 8; i++) {
             var divRegal = document.createElement('div');
             divRegal.className = 'light_pixel red';
 
-            // avans del tronc
-            for (var i = 0; i < 8; i++) {
-                var divRegal = document.createElement('div');
-                divRegal.className = 'light_pixel red';
-
-                // va al primer fill del contenidor, i s'hi posa davant
-                var primerHijo = segonPot.firstChild;
-                segonPot.insertBefore(divRegal, primerHijo);
-            }
-
-
-            // després del tronc
-            for (var i = 0; i < 8; i++) {
-                var divRegal = document.createElement('div');
-                divRegal.className = 'light_pixel red';
-
-                // va al últim fill del contenidor, i s'hi posa darrera
-                segonPot.appendChild(divRegal);
-            }
-
-            // arreglar els espais buits de la segona línia
-
-            // (tercerPot = tercera línia del tronc)
+            // va al últim fill del contenidor, i s'hi posa darrera
+            segonPot.appendChild(divRegal);
         }
 
-        /*
-        en cas que sigui la primera vegada que creem regals, ho guardem en una variable perquè no se'n creïn més
-        */
-        hiHanRegals = true;
+        // arreglar els espais buits de la segona línia
+
+        // (tercerPot = tercera línia del tronc)
     }
+
+    /*
+    en cas que sigui la primera vegada que creem regals, ho guardem en una variable perquè no se'n creïn més
+    */
+    hiHanRegals = true;
 }
