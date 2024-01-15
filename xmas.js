@@ -1,3 +1,4 @@
+// borjaMontseny DAW 2n Dual Tarda [M06 - AV 3.6.2 Treballar amb el DOM]
 window.onload = function () {
 
     var correntElectrica = true;
@@ -50,7 +51,7 @@ window.onload = function () {
                 interruptorStar()
                 break;
             default: // fora
-                console.log("Lletra no reconeguda");
+                console.log("Lletra/Acció no reconeguda");
         }
     }
 
@@ -92,7 +93,6 @@ window.onload = function () {
     }
 
     function hoverCanviarColorStar() {
-
         stars.forEach(function (star) {
             star.addEventListener('mouseover', function () {
                 var starElements = document.querySelectorAll('.tree .star .light_pixel');
@@ -144,27 +144,52 @@ window.onload = function () {
 
     function crearGarnaldes() {
         if (!hiHanGarnaldes) {
-            var tercerFork = document.querySelector('.tree .fork:nth-child(3)');
 
-            if (tercerFork) {
-                var garnalda1 = tercerFork.querySelector('.light_pixel:nth-child(1)');
+            /*
+            He simplificat el procediment en una sola línia:
+            
+            var tercerFork = document.querySelectorAll('.tree .fork')[2];
+            var garlanda1 = tercerFork.querySelector('.light_pixel:first-child');
+            garlanda1.className = "light_pixel red";
+            */
 
-                if (garnalda1) {
-                    garnalda1.className = "light_pixel red";
-                    console.log('Ja tens garnaldes');
-                    hiHanGarnaldes = true;
-                } else {
-                    console.log('No s\'ha trobat el div desitjat dins del tercer fork');
-                }
-            } else {
-                console.log('No s\'ha trobat el tercer fork');
-            }
-        } else {
-            console.log('Ja hi han garnaldes');
+            document.querySelectorAll('.tree .fork')[2].querySelectorAll('.light_pixel')[0].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[3].querySelectorAll('.light_pixel')[2].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[4].querySelectorAll('.light_pixel')[3].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[4].querySelectorAll('.light_pixel')[4].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[4].querySelectorAll('.light_pixel')[5].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[4].querySelectorAll('.light_pixel')[6].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[6].querySelectorAll('.light_pixel')[8].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[7].querySelectorAll('.light_pixel')[8].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[8].querySelectorAll('.light_pixel')[7].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[8].querySelectorAll('.light_pixel')[6].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[9].querySelectorAll('.light_pixel')[1].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[9].querySelectorAll('.light_pixel')[5].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[9].querySelectorAll('.light_pixel')[6].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[10].querySelectorAll('.light_pixel')[2].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[10].querySelectorAll('.light_pixel')[3].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[10].querySelectorAll('.light_pixel')[4].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[11].querySelectorAll('.light_pixel')[1].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[11].querySelectorAll('.light_pixel')[14].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[12].querySelectorAll('.light_pixel')[2].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[12].querySelectorAll('.light_pixel')[13].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[13].querySelectorAll('.light_pixel')[4].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[13].querySelectorAll('.light_pixel')[5].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[13].querySelectorAll('.light_pixel')[6].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[13].querySelectorAll('.light_pixel')[12].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[13].querySelectorAll('.light_pixel')[13].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[14].querySelectorAll('.light_pixel')[7].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[14].querySelectorAll('.light_pixel')[8].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[14].querySelectorAll('.light_pixel')[9].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[14].querySelectorAll('.light_pixel')[10].className = "light_pixel red";
+            document.querySelectorAll('.tree .fork')[14].querySelectorAll('.light_pixel')[11].className = "light_pixel red";
+
+            // guardem aixo en una variable per a que no es descontroli
+            hiHanGarnaldes = true;
+            console.log("Ara hi han garnaldes");
+        } else if (hiHanGarnaldes) {
+            console.log("Ja hi han garnaldes");
         }
-
-        hiHanGarnaldes = true;
-
     }
 
     function crearRegals() {
@@ -214,14 +239,10 @@ window.onload = function () {
             tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
 
 
-            hiHanRegals = true;
+            hiHanRegals = true; // modifiquem la variable per a control d'errors
+            console.log("Ara hi han regals");
         } else if (hiHanRegals) {
             console.log("Ja hi han regals");
         }
-
     }
-
-    /*
-    en cas que sigui la primera vegada que creem regals, ho guardem en una variable perquè no se'n creïn més
-    */
 }
