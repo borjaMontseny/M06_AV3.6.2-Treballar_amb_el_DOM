@@ -2,6 +2,8 @@ window.onload = function () {
 
     var correntElectrica = true;
 
+    var hiHanGarnaldes = false;
+
     var hiHanRegals = false;
 
     var elementsElectrics = document.querySelectorAll('.yellow, .blue');
@@ -9,8 +11,6 @@ window.onload = function () {
     var stars = document.querySelectorAll('.tree .star .yellow');
 
     var bombetes = document.querySelectorAll(':not(.star) > .yellow, .blue');
-
-    var forks = document.querySelectorAll('.fork');
 
     var pots = document.querySelectorAll('.pot');
 
@@ -35,7 +35,7 @@ window.onload = function () {
                 break;
             case "G": // tercer punt
                 console.log("G");
-
+                crearGarnaldes()
                 break;
             case "R": // quart punt
                 console.log("R");
@@ -142,31 +142,86 @@ window.onload = function () {
         }
     }
 
+    function crearGarnaldes() {
+        if (!hiHanGarnaldes) {
+            var tercerFork = document.querySelector('.tree .fork:nth-child(3)');
+
+            if (tercerFork) {
+                var garnalda1 = tercerFork.querySelector('.light_pixel:nth-child(1)');
+
+                if (garnalda1) {
+                    garnalda1.className = "light_pixel red";
+                    console.log('Ja tens garnaldes');
+                    hiHanGarnaldes = true;
+                } else {
+                    console.log('No s\'ha trobat el div desitjat dins del tercer fork');
+                }
+            } else {
+                console.log('No s\'ha trobat el tercer fork');
+            }
+        } else {
+            console.log('Ja hi han garnaldes');
+        }
+
+        hiHanGarnaldes = true;
+
+    }
+
     function crearRegals() {
 
-        // si no hi han regals, es crearàn
+        // Si no hi han regals, es crearàn
         if (!hiHanRegals) {
-            // (segonPot = segona linea del tronc)
-           //  segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            // Segona línia del tronc
+            // Esquerra
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            segonPot.insertBefore(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+
+            // Dreta
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel red";
+            segonPot.appendChild(document.createElement("div"), segonPot.childNodes[0]).className = "light_pixel";
+
+            // Tercera línia del tronc
+            // Esquerra
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.insertBefore(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+
+            // Dreta
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+            tercerPot.appendChild(document.createElement("div"), tercerPot.childNodes[0]).className = "light_pixel red";
+
+
+            hiHanRegals = true;
+        } else if (hiHanRegals) {
+            console.log("Ja hi han regals");
         }
 
-
-        // després del tronc
-        for (var i = 0; i < 8; i++) {
-            var divRegal = document.createElement('div');
-            divRegal.className = 'light_pixel red';
-
-            // va al últim fill del contenidor, i s'hi posa darrera
-            segonPot.appendChild(divRegal);
-        }
-
-        // arreglar els espais buits de la segona línia
-
-        // (tercerPot = tercera línia del tronc)
     }
 
     /*
     en cas que sigui la primera vegada que creem regals, ho guardem en una variable perquè no se'n creïn més
     */
-    hiHanRegals = true;
 }
