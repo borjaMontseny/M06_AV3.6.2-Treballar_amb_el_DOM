@@ -2,21 +2,13 @@
 window.onload = function () {
 
     var correntElectrica = true;
-
     var hiHanGarnaldes = false;
-
     var hiHanRegals = false;
-
     var elementsElectrics = document.querySelectorAll('.yellow, .blue');
-
     var stars = document.querySelectorAll('.tree .star .yellow');
-
     var bombetes = document.querySelectorAll(':not(.star) > .yellow, .blue');
-
     var pots = document.querySelectorAll('.pot');
-
     var segonPot = pots[1];
-
     var tercerPot = pots[2];
 
     // primer punt
