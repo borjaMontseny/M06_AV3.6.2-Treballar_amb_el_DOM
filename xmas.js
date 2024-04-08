@@ -1,15 +1,15 @@
 // borjaMontseny DAW 2n Dual Tarda [M06 - AV 3.6.2 Treballar amb el DOM]
 window.onload = function () {
 
-    var correntElectrica = true;
-    var hiHanGarnaldes = false;
-    var hiHanRegals = false;
-    var elementsElectrics = document.querySelectorAll('.yellow, .blue');
-    var stars = document.querySelectorAll('.tree .star .yellow');
-    var bombetes = document.querySelectorAll(':not(.star) > .yellow, .blue');
-    var pots = document.querySelectorAll('.pot');
-    var segonPot = pots[1];
-    var tercerPot = pots[2];
+    let correntElectrica = true;
+    let hiHanGarnaldes = false;
+    let hiHanRegals = false;
+    let elementsElectrics = document.querySelectorAll('.yellow, .blue');
+    let stars = document.querySelectorAll('.tree .star .yellow');
+    let bombetes = document.querySelectorAll(':not(.star) > .yellow, .blue');
+    let pots = document.querySelectorAll('.pot');
+    let segonPot = pots[1];
+    let tercerPot = pots[2];
 
     // primer punt
     hoverCanviarColorBombetes();
@@ -87,14 +87,14 @@ window.onload = function () {
     function hoverCanviarColorStar() {
         stars.forEach(function (star) {
             star.addEventListener('mouseover', function () {
-                var starElements = document.querySelectorAll('.tree .star .light_pixel');
+                let starElements = document.querySelectorAll('.tree .star .light_pixel');
                 starElements.forEach(function (element) {
                     cambiarColor(element);
                 });
             });
 
             star.addEventListener('mouseout', function () {
-                var starElements = document.querySelectorAll('.tree .star .light_pixel');
+                let starElements = document.querySelectorAll('.tree .star .light_pixel');
                 starElements.forEach(function (element) {
                     cambiarColor(element);
                 });
@@ -140,8 +140,8 @@ window.onload = function () {
             /*
             He simplificat el procediment en una sola línia:
             
-            var tercerFork = document.querySelectorAll('.tree .fork')[2];
-            var garlanda1 = tercerFork.querySelector('.light_pixel:first-child');
+            let tercerFork = document.querySelectorAll('.tree .fork')[2];
+            let garlanda1 = tercerFork.querySelector('.light_pixel:first-child');
             garlanda1.className = "light_pixel red";
             */
 
